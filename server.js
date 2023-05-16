@@ -12,6 +12,19 @@ app.use(cors());
 app.use(express.json());
 config();
 
+app.use((req, res, next) => {
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
+  next();
+});
+
+
+app.use(cors({
+  origin: ['https://learnsi.onrender.com/'],
+  // autres options CORS
+}));
+
+
 
 /*conn file*/
 import connect from './database/conn.js';
